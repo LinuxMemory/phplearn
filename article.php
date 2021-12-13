@@ -10,7 +10,7 @@ if (!$conn) {
 	echo mysqli_connect_error();
 } else {
 
-$db = "select * from articles where id=0";
+$db = "select * from articles where id =" . $_GET['id'];
 
 $result = mysqli_query($conn, $db);
 
