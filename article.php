@@ -1,14 +1,7 @@
 <?php
-$db_host = "localhost";
-$db_user = "cmsuser";
-$db_pass = "Hsra35@5";
-$db_name = "cms";
 
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
-if (!$conn) {
-	echo mysqli_connect_error();
-} else {
+require 'includes/database.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 	
@@ -36,7 +29,7 @@ var_dump($articles);
 
 }
 	
-} 
+
 ?>
 
 <!DOCTYPE html>
