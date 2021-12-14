@@ -1,24 +1,56 @@
-<?php
+<?php 
 
-$posts = [1 => 'Good news', 3 => 'Read this', 5 => 'Important announcement'];
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+var_dump($_POST);
+}
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Posts</title>
-    </head>
-    <body>
+	
+<body>
+	
+	<form method="post">
+		
+		<div>
+			<label for="text">Text:</label>
+			<input type="text" name="text" id="text">
+		</div>
+		
+		<div>
+			<input type="checkbox" name="checkbox" value="yes" id="checkbox">
+			<label for="checkbox">Yes</label>
+		</div>
+		
+		
+		<p>Colours:</p>
+		<div>
+			 <input type="radio" id="blue" name="color" value="blue">
+			 <label for="blue">Blue</label>
+		</div>
+		
+		<div>
+			<input type="radio" id="red" name="color" value="red">
+			<label for="red">Red</label>
+		</div>
+		
+		<div>
+			 <input type="radio" id="green" name="color" value="green">
+			 <label for="green">Green</label>
+		</div>
+	
 
-    <h1>Posts</h1>
+		
+		<button>Send</button>
+		
+	</form>
 
-    <ul>
-        <?php foreach($posts as $id => $title): ?>
-        
-            <li><a href="post.php?id=<?php echo $id; ?>"><?php echo $title; ?> </a></li>
-            
-        <?php endforeach; ?>
-    </ul>
-
-    </body>
+</body>
+	
 </html>
+	
+	
