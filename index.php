@@ -2,6 +2,8 @@
 
 require 'includes/database.php';
 
+$conn = getDB();
+
 $db = "select * from articles";
 
 $result = mysqli_query($conn, $db);

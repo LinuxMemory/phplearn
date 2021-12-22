@@ -3,9 +3,10 @@
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	
 	var_dump($_POST);	
-
-
+	
 require 'includes/database.php';
+	
+$conn = getDB();
 
 $sql = "INSERT INTO articles(title, content, published_time) VALUES(?,?,?)";
 

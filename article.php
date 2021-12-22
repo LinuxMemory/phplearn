@@ -1,7 +1,8 @@
 <?php
 
-
 require 'includes/database.php';
+
+$conn = getDB();
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 	
