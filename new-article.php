@@ -31,6 +31,11 @@ echo mysqli_error($conn);
 
 } else {
 
+if ($_POST['published_time'] == ''){
+	$_POST['published_time'] = null;
+
+}
+	
 mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_time']);
 
 if (mysqli_stmt_execute($stmt)) {
