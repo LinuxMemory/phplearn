@@ -66,12 +66,12 @@ echo "not working";
 		
 		<div>
 			<label for="title">Title</label>
-			<input type="text" name="title" id="title" value="<?php echo $_POST['title']; ?>">
+			<input type="text" name="title" id="title" value="<?php echo htmlspecialchars($_POST['title']); ?>">
 		</div>
 		<br>
 		<div>
 			<label for="content">Content</label>
-			<textarea name="content" id="content"><?php echo $_POST['content']; ?></textarea>
+			<textarea name="content" id="content"><?php echo htmlspecialchars($_POST['content']); ?></textarea>
 		</div>
 		<br>
 		<div>

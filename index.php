@@ -29,8 +29,8 @@ $articles = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <h1>My Blog</h1>
 	
 <?php foreach($articles as $article): ?>
-<h3>	<li><a href="article.php?id=<?php echo $article['id'] ?>"><?php echo $article['title']; ?></a></li></h3>
-	<p><?php echo $article['content']; ?></p>
+<h3>	<li><a href="article.php?id=<?php echo htmlspecialchars($article['id']); ?>"><?php echo htmlspecialchars($article['title']); ?></a></li></h3>
+	<p><?php echo htmlspecialchars($article['content']); ?></p>
 <?php endforeach; ?>
 
 <a href=article.php> test </a>
