@@ -3,10 +3,7 @@ require 'includes/database.php';
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	
-//	var_dump($_POST);	//
-
-	
-
+var_dump($_POST['content']);
 	
 if ($_POST['title'] == ''){
 
@@ -42,11 +39,11 @@ $id = mysqli_insert_id($conn);
 
 echo "Inserted id equals: $id";
 
-			}
-		} 
-	} else {
+			}else {
 echo "not working";
 	}
+		} 
+	} 
 }
 ?>
 
@@ -69,17 +66,17 @@ echo "not working";
 		
 		<div>
 			<label for="title">Title</label>
-			<input type="text" name="title" id="title">
+			<input type="text" name="title" id="title" value="<?php echo $_POST['title']; ?>">
 		</div>
 		<br>
 		<div>
 			<label for="content">Content</label>
-			<textarea name="content" id="content"></textarea>
+			<textarea name="content" id="content"><?php echo $_POST['content']; ?></textarea>
 		</div>
 		<br>
 		<div>
 			<label for="published_time">Published at</label>
-			<input type="date-local" name="published_time" id="published_time" placeholder="0000-00-00" >
+			<input type="date-local" name="published_time" id="published_time" placeholder="0000-00-00" value="<?php echo $_POST['published_time']; ?>">
 		</div>
 		<br>
 		<button>Send</button>
