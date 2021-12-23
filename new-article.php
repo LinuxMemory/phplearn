@@ -1,11 +1,28 @@
 <?php
-
+require 'includes/database.php';
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	
-	var_dump($_POST);	
+//	var_dump($_POST);	//
+
 	
-require 'includes/database.php';
+
 	
+if ($_POST['title'] == ''){
+
+	$errors[] = "Titile is required";
+	
+}
+
+if($_POST['content'] == '') {
+
+$errors[] = "Content is required";
+
+}
+	
+
+if (empty($errors)){
+
 $conn = getDB();
 
 $sql = "INSERT INTO articles(title, content, published_time) VALUES(?,?,?)";
@@ -25,8 +42,10 @@ $id = mysqli_insert_id($conn);
 
 echo "Inserted id equals: $id";
 
-	
+			}
 		} 
+	} else {
+echo "not working";
 	}
 }
 ?>
@@ -41,6 +60,10 @@ echo "Inserted id equals: $id";
 	<h1>My blog</h1>
 	
 	<h2>New article</h2>
+
+	<?php foreach ($errors as $value): ?>
+	<ul><li><p><?php echo $value; ?></li></ul>
+	<?php endforeach; ?>
 	
 	<form method="post">
 		
