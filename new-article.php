@@ -16,7 +16,27 @@ if($_POST['content'] == '') {
 $errors[] = "Content is required";
 
 }
+
+if ($_POST['published_time'] == ''){
+	$_POST['published_time'] = null;
+
+}
 	
+if ($_POST['published_time'] !=''){
+$date_time = date_create_from_format('Y-m-d H:i:s', $_POST['published_time']);
+
+if ($date_time === false){
+$errors[] = "Date is wrong";
+} else {
+$date_time = date_get_last_errors();
+if ($date_time['warning_count'] > 0){
+$errors[] = "Date is wrong";
+}
+
+}
+
+
+}
 
 if (empty($errors)){
 
@@ -31,10 +51,7 @@ echo mysqli_error($conn);
 
 } else {
 
-if ($_POST['published_time'] == ''){
-	$_POST['published_time'] = null;
 
-}
 	
 mysqli_stmt_bind_param($stmt, "sss", $_POST['title'], $_POST['content'], $_POST['published_time']);
 
