@@ -60,7 +60,14 @@ if (mysqli_stmt_execute($stmt)) {
 $id = mysqli_insert_id($conn);
 
 echo "Inserted id equals: $id";
-
+	
+if (isset($_SERVER['HTTPS']) & $_SERVER['HTTPS'] != "on"){
+	$protocl = "https";
+} else {
+	$protocol = "http";
+}
+		
+	header("Location: $protocol://" . $_SERVER['HTTP_HOST'] . "/article.php?id=$id");
 			}else {
 echo "not working";
 	}

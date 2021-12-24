@@ -1,15 +1,4 @@
 <?php
-function getMessage($value){
-	if($value){
-	echo "This is true";
-	
-	} else {
-	echo "This is false";
-	
-	}
-
-}
-
-getMessage(true);
+var_dump($_SERVER['SERVER_NAME']);
 
 ?>
