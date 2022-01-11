@@ -4,25 +4,49 @@ require "includes/database.php";
 require "includes/get-article.php";
 require "includes/validate-erros.php";
 
+
 $conn = getDB();
 
 $articles = getArticle($conn, $_GET['id']);
+$errors = validateInput($title, $content, $published_time);
 
+
+$id = $articles['id'];
 $title = $articles['title'];
 $content = $articles['content'];
 $published_time = $articles['published_time'];
-var_dump($content);
-var_dump($articles);
 
-$errors = validateInput($title, $content, $published_time);
-var_dump($errors);
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
+$sql = "update articles set 
+title = ?
+where id = ?";
+	
+$title = $_POST['title'];
+	
+var_dump($title);
+$stmt = mysqli_prepare($conn, $sql);	
+	
+
+mysqli_stmt_bind_param($stmt, "si", $title, $id);
+var_dump($stmt);
+/*var_dump($stmt);
+var_dump($id);
+
+var_dump($content);
+var_dump($published_time);
+*/
+mysqli_stmt_execute($stmt);
+
+
 
 
 if ($articles === null) {
 	echo "article not found";
 }
 
-
+}
 ?>
 
 <!DOCTYPE HTML>

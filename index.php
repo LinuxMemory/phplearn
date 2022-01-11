@@ -33,7 +33,6 @@ $articles = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	<p><?php echo htmlspecialchars($article['content']); ?></p>
 <?php endforeach; ?>
 
-<a href=article.php> test </a>
 	
 
 </body>
