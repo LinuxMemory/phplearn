@@ -11,7 +11,7 @@ $conn = getDB();
 $articles = getArticle($conn, $_GET['id']);
 
 $id = $articles['id'];
-
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
 $sql = "DELETE from articles where id = ?";
 
 $stmt = mysqli_prepare($conn,$sql);
@@ -27,7 +27,24 @@ mysqli_execute($stmt);
 redirectURL("/index.php");
 
 }
-
+}
 
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<body>
+	<form method="post" >
+		
+		<h3>Are you sure want remove the article?</h3>
+		<button>Yes</button>
+		
+		
+		<a href="article.php?id=<?php echo $id ?>">Cancel</a>
+	
+	</form>
+	
+	
+</body>
+</html>
