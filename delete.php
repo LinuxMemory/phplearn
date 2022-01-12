@@ -24,6 +24,7 @@ mysqli_stmt_bind_param($stmt, "i", $id);
 	
 mysqli_execute($stmt);
 
+redirectURL("/index.php");
 
 }
 

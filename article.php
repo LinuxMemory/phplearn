@@ -49,7 +49,9 @@ var_dump($articles);
 <?php endif; ?>
 
 <a href="edit-article.php?id=<?php echo $_GET['id'] ?>">Edit article page</a>	
-<a href="delete.php?id=<?php echo $_GET['id'] ?>">Delete article</a>	
+<form method='post' action="delete.php?id=<?php echo $_GET['id'] ?>">
+	<button>Delete</button>
+	</form>
 
 	
 </body>
