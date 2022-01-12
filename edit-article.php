@@ -3,6 +3,7 @@
 require "includes/database.php";
 require "includes/get-article.php";
 require "includes/validate-erros.php";
+require "includes/redirect-url.php";
 
 
 $conn = getDB();
@@ -25,19 +26,21 @@ where id = ?";
 	
 $title = $_POST['title'];
 	
-var_dump($title);
 $stmt = mysqli_prepare($conn, $sql);	
 	
 
 mysqli_stmt_bind_param($stmt, "si", $title, $id);
-var_dump($stmt);
-/*var_dump($stmt);
-var_dump($id);
 
-var_dump($content);
-var_dump($published_time);
-*/
-mysqli_stmt_execute($stmt);
+	
+if (mysqli_stmt_execute($stmt)){
+	
+redirectURL("/article.php?id=$id");
+	
+}
+
+
+	
+
 
 
 

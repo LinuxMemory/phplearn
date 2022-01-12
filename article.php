@@ -29,7 +29,7 @@ $articles == null;
 var_dump($articles);
 
 }
-	
+
 
 ?>
 
@@ -48,6 +48,10 @@ var_dump($articles);
 	<p><?php echo $articles['content']; ?></p>
 <?php endif; ?>
 
+<a href="edit-article.php?id=<?php echo $_GET['id'] ?>">Edit article page</a>	
+<a href="delete.php?id=<?php echo $_GET['id'] ?>">Delete article</a>	
+
+	
 </body>
 </html>
 
