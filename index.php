@@ -2,6 +2,8 @@
 
 require 'includes/database.php';
 
+session_start();
+
 $conn = getDB();
 
 $db = "select * from articles";
@@ -27,6 +29,13 @@ $articles = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <body>
 
 <h1>My Blog</h1>
+
+	
+<?php if($_SESSION['is_logged']) :?>
+<?php echo "You are logged in"; ?> <a href="logout.php">Log out</a>
+<?php else :?>
+<?php echo "You are not logged in"; ?> <a href="login.php">Log in</a>
+<?php endif; ?>
 	
 <?php foreach($articles as $article): ?>
 <h3>	<li><a href="article.php?id=<?php echo htmlspecialchars($article['id']); ?>"><?php echo htmlspecialchars($article['title']); ?></a></li></h3>

@@ -41,9 +41,10 @@ redirectURL("/index.php");
 		<button>Yes</button>
 		
 		
-		<a href="article.php?id=<?php echo $id ?>">Cancel</a>
-	
+		<!--<a href="article.php?id=<?php echo $id ?>">Cancel</a> -->
 	</form>
+	
+	<button onclick="location.href = 'article.php?id=<?php echo $id ?>'">Cancel</button>
 	
 	
 </body>
