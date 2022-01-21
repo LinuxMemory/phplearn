@@ -1,7 +1,7 @@
 <?php
 
 require 'includes/database.php';
-
+require 'includes/auth.php';
 session_start();
 
 $conn = getDB();
@@ -30,12 +30,15 @@ $articles = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <h1>My Blog</h1>
 
-	
-<?php if($_SESSION['is_logged']) :?>
-<?php echo "You are logged in"; ?> <a href="logout.php">Log out</a>
-<?php else :?>
+<?php if(!isLogged()): ?>
 <?php echo "You are not logged in"; ?> <a href="login.php">Log in</a>
+<?php else : ?>
+<?php echo "You are logged in"; ?> <a href="logout.php">Log out</a>
+<p></p>
+<a href="new-article.php">New article</a>
+
 <?php endif; ?>
+	
 	
 <?php foreach($articles as $article): ?>
 <h3>	<li><a href="article.php?id=<?php echo htmlspecialchars($article['id']); ?>"><?php echo htmlspecialchars($article['title']); ?></a></li></h3>
