@@ -4,7 +4,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 	
-if ($_POST['username'] == "dave" && $_POST['password'] == "1qazxsw21"){
+if ($_POST['username'] == "dave" && $_POST['password'] == "1qazxsw235"){
 	session_regenerate_id();
 	$_SESSION['is_logged'] = true;
 	redirectURL("/index.php");
